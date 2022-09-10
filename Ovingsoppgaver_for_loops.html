@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<!--
+<ul id ="nedtelling"></ul> Oppgave 1 og 1.1 for loops
+
+<script>
+  let htmlString = "";
+  for(let counter = 10; counter >= 0; counter--){
+    htmlString += `<li>${counter === 0 ? "we have taken off" :counter }</li>`; // ${dett er det samme som blir skrevet i if(statement)}, ? også hvis dette er sant hva skal den skrive ut : kolon betyr else også hva den skal skrive ut
+  }
+  document.getElementById("nedtelling").innerHTML = htmlString;
+</script>
+-->
+
+<!--
+<ul id="nedtelling"></ul> Oppgave 2 while loop
+
+<script>
+  let htmlNedtelling ="";
+  let teller = 10;
+
+  while(teller >= 0){
+    htmlNedtelling += `<li>${teller === 0 ? "we take off" : teller}</li>`
+    teller --
+  }
+  document.getElementById("nedtelling").innerHTML = htmlNedtelling;
+</script>
+-->
+
+<!--
+<ul id="animals"></ul> Oppgave 3 med dyr
+
+<script>
+  const dyr = ["mus", "katt", "hund", "esel", "okse", "rotte", "edderkopp", "ku", "panda", "marsvin", "hest"];
+  let htmlString ="";
+  
+  for(let counter = 0; counter < dyr.length; counter++){
+    htmlString += `<li>${"dyrenavn" + counter + ": " + dyr[counter]}</li>`
+  }
+  document.getElementById("animals").innerHTML = htmlString;
+
+</script>
+-->
+
+</body>
+</html>
