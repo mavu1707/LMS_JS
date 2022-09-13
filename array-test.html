@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array tester skole</title>
+</head>
+<body>
+  <script>
+    const handleListe = ["brød", "sjokolade", "egg", "melk", "ost", "pølse"]
+    const lengde = handleListe.length;
+    console.log("Handlelisten inneholder:" + lengde + " varer");
+
+
+    //const index = 2
+    //const indexVare = handleListe[index]
+    //console.log(`Varen på rad ${index + 1} er ${vare}`);
+     
+    const vare = handleListe[2];
+    const index = handleListe.indexOf(vare)
+    console.log(`Varen på rad ${index + 1} er ${vare}`);
+
+    handleListe.sort()
+    console.log(handleListe);
+
+  </script>
+</body>
+</html>
