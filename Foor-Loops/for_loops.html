@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="teller"></ul>
+  <script>
+    var utskrift ="";
+    const folk = ["Markus", "Jonna", "Martin", "Alex", "Trude", "Ola"]; //kan lage en for loop for variabler også
+
+    for(folket = 0; folket < folk.length; folket++){ //denne passer på at vi ikke teller mer en folk som er i const folk variablen
+      console.log("Person av index: " + folket + ": " + folk[folket]);
+    }
+
+    for(teller = 0; teller <= 100; teller++){ //Denne for loopen teller til 100, først definerer jeg fra hvor den skal starte, så til hvor den skal stoppe også til slutt hvordan den skal telle. 
+      utskrift += `<li>${teller}</li>`; //Dette kjører det slik at det kommer på en liste form i html
+    }
+
+    document.getElementById("teller").innerHTML=utskrift;
+  </script>
+  
+</body>
+</html>
