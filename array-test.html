@@ -8,24 +8,39 @@
 </head>
 <body>
   <script>
-    const handleListe = ["brød", "sjokolade", "egg", "melk", "ost", "pølse"]
-    const lengde = handleListe.length;
-    console.log("Handlelisten inneholder:" + lengde + " varer");
+    const productRegister =[{
+      produsent: "Nike",
+      modell: "Air Zoom",
+      idrett: "Løping",
+      farge: "Rød",
+      pris: 1234
+    },
+    {
+      produsent: "Adidas",
+      modell: "Kobe 6",
+      idrett: "Basketball",
+      farge: "Hvit",
+      pris: 318381
+    },
+    {
+      produsent: "Adidas",
+      modell: "Messi",
+      idrett: "Fotball",
+      farge: "Grønn",
+      pris: 2
+    },
+    {
+      produsent: "Nike",
+      modell: "Lebron 13",
+      idrett: "Basketball",
+      farge: "Svart",
+      pris: 1
+    }
+  ];
 
+  console.log(productRegister[3].modell);
 
-    //const index = 2
-    //const indexVare = handleListe[index]
-    //console.log(`Varen på rad ${index + 1} er ${vare}`);
-     
-    const vare = handleListe[2];
-    const index = handleListe.indexOf(vare)
-    console.log(`Varen på rad ${index + 1} er ${vare}`);
-
-    handleListe.sort()
-    console.log(handleListe);
-
-    
-
+  
   </script>
 </body>
 </html>
