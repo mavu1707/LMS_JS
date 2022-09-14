@@ -1,0 +1,55 @@
+<p id="joinTest"></p>
+<p id="toStringTest"></p>
+<p id="sortTest"></p>
+
+<script>
+  const shoppingList = ["Melk", "Ost", "Svamper", "Gresskar", "Tomat", "Kylling"];
+  const sortTall = [10, 50, 20, 68, 32, 47, 87]; //Tall i en array som ikke er i rekkefølge
+  const elev = { //lagde flere elementer inni const blokken
+    firstName: "Markus",
+    lastName: "Vullum",
+    studentID: 18352,
+    courses: ["fd29934", "jjd89s", "hjdd93"]
+  }//Det er mulig å endre og slette ellementer(nøkkel) inne i const elev variabelen
+  const {firstName, lastName} = elev; //destrukturerer elemntet
+  const nyShoppingList = [ //Her blir en shopping liste laget, der antallet blir skrevet ut i en matrise form (tabell)
+    ["Egg", 12], //for å skrive ut [0],[0]
+    ["Melk", 1], 
+    ["epler", 4],
+    ["brus", 2]
+  ]
+  const registerList =[ //Istedenfor å lage et element til alle så skriver vi de under samme variabel (registerList)
+    {
+      name: "Marius aker", //Alt dette er elemt [0]
+      office: "d1-06", //for å skrive ut må vi først velge elemtet vi vil hente info ut fra 1,2 eller 3 også hva f.eks: registerList[0].email
+      email: "zz@gmail.com",
+      role: "teacher"
+    },
+    {
+      name: "sander berg",//Elt dett er elemt [1]
+      office: "hjemme",
+      email: "xx@gmail.com",
+      role: "student"
+    },
+    {
+      name: "sandra isep",//Alt dette er elemt [2]
+      office: "hjemme",
+      email: "LL@gmail.com",
+      role: "student"
+    }
+  ]
+
+  sortTall.sort(function(a, b){return a-b}); //.soret sorterer strings fra A-Å, skriver opp funksjonene for at den skal printe ut tallene i rekkefølge, akn også få den til å tell ned (function(a, b){return b- a}) .reverse sorterer fra Å-A
+
+  shoppingList.splice(2, 0, "brunost", "prim"); //Legger tilbrunost og prim
+
+  shoppingList.push("Epler"); //Legger til epler i listen
+
+  shoppingList.splice(1, 3)//Fjerner ønskede elementer i en array, 1 fjerner elemtet 1, 3 fjerener 3 elementer etter element 1
+
+  document.getElementById("joinTest").innerHTML = shoppingList.toString(); //Setter et , foran hvert ellement
+  document.getElementById("toStringTest").innerHTML = shoppingList.join(", "); //Kan sette hva jeg vil innenfor ("") for å printe det ut foran hvert element
+  document.getElementById("sortTest").innerHTML = sortTall; //Printer ut sortTall utifra p id'en sortTest
+  element.innerHTML = `${firstName} ${lastName}` //printer ut navnet til eleven
+
+</script>

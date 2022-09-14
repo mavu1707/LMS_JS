@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<<<<<<< HEAD
+    <p id = elseIfTest></p>
+=======
+    <p id = "elseIfTest"></p>
+>>>>>>> ca8ad8d38994ddb6e262032576e4182c9e66e008
+    <script>
+        let myAge = prompt("What is your age? ");
+        let text ="";
+        if (myAge < 18){
+            text = "You're not old enough you're: " + myAge + " years old";
+        } else if (myAge >=18 && myAge <= 66){
+           text = "You're old enough, you're " + myAge;
+        }else {
+            text = "You're more than old enough, you're " + myAge + "!";
+        }
+
+        document.getElementById("elseIfTest").innerHTML = text;
+            
+            
+
+    </script>
+</body>
+</html>
