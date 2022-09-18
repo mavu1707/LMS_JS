@@ -7,13 +7,91 @@
   <title>Document</title>
 </head>
 <body>
-    <script>
-      let player = "hhh"
-      function test(name, player, hei){
-        return;
-      }
 
-      test();
+  <!--OPPGAVE 1-->
+  <!--<p id="name"></p> <!--Har bare laget en id slik at jeg kan hente ut dette senere i funksjonen-->
+  <!--<p id="mail"></p>
+    <script>
+      function nameMail(){ //Lager en funksjon med ett navn
+        document.getElementById("name").innerHTML = "Markus vullum" //Her inne velger jeg hva denne funksjonen skal gjøre
+        document.getElementById("mail").innerHTML = "zzz@gmail.com" //Og hva som skal stå inne i p taggen
+      }
+      nameMail(); //Her kaller jeg på funksjonen og den gjør det den blir bedt om, henter id navn og hva den skal skrive ut i <p> taggen
     </script>
+-->
+<!--OPPGAVE 2 -->
+<!--
+    <p id="name"></p> <!--Lager p tagger med de ulike verdiene-->
+    <!--<p id="mail"></p>
+    <p id="age"></p>
+
+    <script>
+      function test(name, email, birthyear){ //Skriver en funksjon som tar imot tre ulike parametere
+        document.getElementById("name").innerHTML = name; //Parameterne må stå i den samme rekkefølgen jeg har skrevet parameterne over
+        document.getElementById("mail").innerHTML = email;
+        document.getElementById("age").innerHTML = 2022 - birthyear;
+      }
+       test("Markus", "mr.markus@gmail.com", 2001) //Her skriver jeg inn verdiene i riktig rekkefølge
+    </script>
+-->
+  <!--OPPGAVE 3-->
+  <!--<p id="name"></p> <!--Lager p tagger med de ulike verdiene-->
+  <!--<p id="mail"></p>
+  <p id="age"></p>
+
+  <script>
+    function test(name = "Ikke opgitt", email = "Ikke oppgitt", birthyear = "Ikke oppgitt"){ //lager en funksjon med parametere som = "string", hvis de ikke blir oppgitt dersom funksjons kallingen ikke oppgir elementene
+      document.getElementById("name").innerHTML = name //Printer ut som vanlig
+      document.getElementById("mail").innerHTML = email
+
+      if(birthyear === "Ikke oppgitt"){ //If statement
+        document.getElementById("age").innerHTML = birthyear //Skriver ut ikke oppgitt dersom birthyear ikke blir oppgitt it test()
+      }else{
+        const year = Number(birthyear) //Dette konverterer en velue til et nummer, hvis det ikke kan bli konvertert så blir NaN skrevet ut
+        const age = 2022 - year //definerer hva age er, det blir dette året - birthyear
+
+        document.getElementById("age").innerHTML = age //Skriver ut som vanlig
+      }
+    }
+
+    test("Markus", "markus.vullui", 2001);
+  </script>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
