@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <article>
+    <h2>Handleliste</h2>
+    <h3>Frukt og grønnsaker</h3>
+    <ul id="fruits"></ul>
+    <h3>Kjøtt og Fisk</h3>
+    <ul id="meat"></ul>
+    <h3>Husholdning</h3>
+    <ul id="misc"></ul>
+  </article>
+  
+  <script>
+    const fruits = ["Epler", "Bananer", "Brokkoli"];
+    //fruits.map(fruit => document.getElementById("fruits").innerHTML += `<li>${fruit}</li>`)
+
+    const meats = ["kjøttdeig", "laks", "biff", "fiskekaker"];
+    //meats.map(meat => document.getElementById("meat").innerHTML = `<li>${meat}</li>`)
+
+    const misc = ["dopapir", "tannbørste", "oppvaskmiddel"];
+
+    function listPrint(id, array){
+      array.map(food => document.getElementById(id).innerHTML += `<li>${food}</li>`)
+    }
+
+    listPrint("fruits", fruits)
+    listPrint("meat", meats)
+    listPrint("misc", misc)
+
+  </script>
+</body>
+</html>

@@ -117,20 +117,30 @@
   calculator(10, 2)
 </script>
 -->
+<p id="person"></p>
 
 <script>
-  setTimeout(function checkwinner(age = 12){
-    const hi = ""
-    if(age === 12){
-      hi = "Right"
-    }else{
-      hi = "Wrong"
+
+function personName(firstname, lastname, gender){
+  if(!firstname || !lastname){
+    alert("Du må fylle ut fornavn og etternavn")
+  }else{
+    let nameString = ""
+
+    if(gender === "female"){
+      nameString += "Mrs. "
     }
-  }, 1000)
+    if(gender === "male"){
+      nameString += "Mr. "
+    }
+    nameString += firstname[0] + ". " + lastname
+    return nameString
+  }
+}
 
-  console.log(checkwinner());
+document.getElementById("person").innerHTML = personName("Markus", "Vullum", "male")
+
 </script>
-
 
 
 
