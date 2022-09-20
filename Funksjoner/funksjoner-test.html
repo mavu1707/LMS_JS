@@ -58,6 +58,7 @@
   </script>
 -->
 
+<!--
   <script>
     function test(name = "m"){
       let winner ="";
@@ -71,7 +72,26 @@
 
     console.log(test());
   </script>
+-->
 
+<p id="name"></p>
+<p id="mail"></p>
+<p id="age"></p>
+
+<script>
+  function oppgaveTre(name = "ikke oppgitt", birthyear = "ikke oppgitt", email = "ikke oppgitt"){
+    document.getElementById("name").innerHTML = name
+
+    if(birthyear === "ikke oppgitt"){
+      document.getElementById("age").innerHTML = birthyear
+    }else{
+      const year = Number(birthyear)
+      document.getElementById("age").innerHTML = 2022 - year
+    }
+    document.getElementById("mail").innerHTML = email
+  }
+  oppgaveTre("Markus", 2001)
+</script>
 
 
 
