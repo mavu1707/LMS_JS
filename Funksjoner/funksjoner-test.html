@@ -73,7 +73,7 @@
     console.log(test());
   </script>
 -->
-
+<!--
 <p id="name"></p>
 <p id="mail"></p>
 <p id="age"></p>
@@ -92,8 +92,31 @@
   }
   oppgaveTre("Markus", 2001)
 </script>
+-->
 
+<!--OPPGAVE 4-->
+<!--
+<p>Math problems function</p>
+<ul id="result"></ul>
 
+<script>
+  function calculator(num1 = 0, num2 = 0){
+    const add = num1 + num2
+    const sub = num1 - num2
+    const mult = num1 * num2
+    const div = num1 / num2
+
+    const result = 
+    `<ul>${num1} + ${num2} = ${add}</ul>
+    <ul>${num1} - ${num2} = ${sub}</ul>
+    <ul>${num1} * ${num2} = ${mult}</ul>
+    <ul>${num1} / ${num2} = ${div}</ul>
+    `
+    document.getElementById("result").innerHTML = result
+  }
+  calculator(10, 2)
+</script>
+-->
 
 
 
