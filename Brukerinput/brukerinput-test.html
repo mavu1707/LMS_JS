@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button type="button" onclick="test()">Klikk her</button>
+  <div id="t" style="width: 200px; height: 200px; background: red">move over me</div>
+
+  <input type="text" name="nameinput" id="nameinput"/>
+  <button id="sendName">her</button>
+  <script>
+    function test(){
+      alert("Hei")
+    }
+
+    const div = document.getElementById("t")
+    div.addEventListener("mouseover", printMsg)
+
+    function printMsg(){
+      console.log("hdhdhhd");
+    }
+
+    document.getElementById("sendName").addEventListener("click", printName)
+
+    function printName(){
+      const nameInputValue = document.getElementById("nameinput").ariaValueMax
+      console.log(nameInputValue);
+    }
+  </script>
+</body>
+</html>
