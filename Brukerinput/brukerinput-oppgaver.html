@@ -7,12 +7,12 @@
   <title>Document</title>
 </head>
 <body>
-<!--OPPGAVE 1. BRUKERINPUT
-<!--Lager en headding med en span som er tom
+<!--OPPGAVE 1. BRUKERINPUT-->
+<!--Lager en headding med en span som er tom-->
   <h1>Dagens ord er: <span id="ord"></span> </h1>
-  <!--Leger ett input området slik at bruker kan skrive inn text(type="text")
+  <!--Leger ett input området slik at bruker kan skrive inn text(type="text")-->
   <input type="text" id="brukerord">
-  <!--Så lager jeg en knapp
+  <!--Så lager jeg en knapp-->
   <button id="sendord">Lagre Ord</button>
 
   <script>
@@ -29,12 +29,61 @@
     }
 
   </script>
-  -->
-
-
   
-  <script>
 
+<!--OPPGAVE 2. BRUKERINPUT
+  <h1>Dagens ord er: <span id="ord"></span></h1>
+  <button id="velgord">Ferdig Ord</button>
+  <script>
+    //Lager en array med forhåndsbestemte ord
+    const ordliste = ["katt", "hund", "iskrem", "fotball", "telefon"];
+    //Knappen som er laget i HTML må ha en click funksjon som skal gjøre noe når den blir klikket på
+    document.getElementById("velgord").addEventListener("click", selectWord)
+    function selectWord(){
+      //Dette er slik man lager en random generator for arrayen ordliste
+      let randOrd = ordliste[Math.floor(Math.random() * ordliste.length)];
+      document.getElementById("ord").innerHTML = randOrd
+    }
   </script>
+  -->
+<!-- OPPGAVE 3. KALKULATOR
+  <input type="number" id="tall1">
+  <input type="number" id="tall2">
+
+  <button id="pluss">+</button>
+  <button id="minus">-</button>
+  <button id="gange">*</button>
+  <button id="dele">/</button>
+
+  <h2>reusltat: <span id="resultat"></span></h2>
+
+  <script>
+    //Lager en kosnt ut av elementene slik at det blir enklere ås rkive dem opp senere
+    const number1 = document.getElementById("tall1")
+    const number2 = document.getElementById("tall2")
+    const result = document.getElementById("resultat")
+
+    //Arrow funksjon
+    const add = () =>{
+      //REesultatet skrives ut til "resultat" = parseInt gjør om string til intiger
+      result.innerHTML = parseInt(number1.value) + parseInt(number2.value);
+    }
+    const sub = () =>{
+      result.innerHTML = parseInt(number1.value) - parseInt(number2.value);
+    }
+    const mult = () =>{
+      result.innerHTML = parseInt(number1.value) * parseInt(number2.value);
+    }
+    const divi = () =>{
+      result.innerHTML = parseInt(number1.value) / parseInt(number2.value);
+    }
+
+    //Skriver ut til addEventListener og funksjonen som skal utføres
+    document.getElementById("pluss").addEventListener("click", add)
+    document.getElementById("minus").addEventListener("click", sub)
+    document.getElementById("gange").addEventListener("click", mult)
+    document.getElementById("dele").addEventListener("click", divi)
+  </script>
+  -->
 </body>
 </html>

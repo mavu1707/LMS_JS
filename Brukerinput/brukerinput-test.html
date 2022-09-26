@@ -7,29 +7,23 @@
   <title>Document</title>
 </head>
 <body>
-  <button type="button" onclick="test()">Klikk her</button>
-  <div id="t" style="width: 200px; height: 200px; background: red">move over me</div>
+  <h1>Dagnes ord: <span id="ord"></span></h1>
+  <input type="text" id="brukerord">
+  <button id="sendord">Lagre ord</button>
 
-  <input type="text" name="nameinput" id="nameinput"/>
-  <button id="sendName">her</button>
   <script>
+    document.getElementById("sendord").addEventListener("click", test)
+    
     function test(){
-      alert("Hei")
+      const printUt = document.getElementById("brukerord").value
+      document.getElementById("ord").innerHTML = printUt
+      //Hvorfor kan man ikke bruke printUt = ""
+      //document.getElementById("brukerord").value = ""
+      printUt = ""
+
+      document.getElementById("brukerord").focus()
     }
-
-    const div = document.getElementById("t")
-    div.addEventListener("mouseover", printMsg)
-
-    function printMsg(){
-      console.log("hdhdhhd");
-    }
-
-    document.getElementById("sendName").addEventListener("click", printName)
-
-    function printName(){
-      const nameInputValue = document.getElementById("nameinput").value
-      console.log(nameInputValue);
-    }
+    
   </script>
 </body>
 </html>
