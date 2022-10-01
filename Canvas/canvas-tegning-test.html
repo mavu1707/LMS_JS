@@ -7,6 +7,132 @@
   <title>Document</title>
 </head>
 <body>
+  <!-- Canvas fikrant og forklaring på hvordan kordinatsystemet til canvas fungerer
+  <canvas id="sqr"></canvas>
 
+  <script>
+    const canvas = document.getElementById("sqr")
+    const ctx = canvas.getContext("2d")
+    canvas.width = 500
+    canvas.height = 500
+
+    //Basicly det samme som matte kordinater, teknisk sett skulle det vært minus men det er omvendt, det er ikke minus men alle tallene er positive
+    //Starter 0 på X aksen og 0 på Y aksen
+    ctx.moveTo(0, 0)
+    //Tegner streken fra 0 på x aksen til 500 på Y aksen
+    ctx.lineTo(0, 500)
+
+    //starter 0 på X aksen og 0 på Y aksen
+    ctx.moveTo(0, 0)
+    //Så går den 500 på X aksen mens den holder seg på 0 på Y
+    ctx.lineTo(500, 0)
+
+    //starter 0 på X aksen og 500 på Y aksen
+    ctx.moveTo(0, 500)
+    ctx.lineTo(500, 500)
+    
+    // starter fra  500 -> langs X aksen, også 0 på Y aksen
+    ctx.moveTo(500, 0)
+    //Tegner streken fra 500 på X aksen, til y aksen
+    ctx.lineTo(500, 500)
+    ctx.stroke()
+  </script>
+  -->
+
+
+  <!--Oppgave 1. X
+  <canvas id="test"></canvas>
+  <script>
+    const canvas = document.getElementById("test")
+    const ctx = canvas.getContext("2d")
+    canvas.width = 500
+    canvas.height= 500
+
+    ctx.moveTo(0, 0)
+    ctx.lineTo(500, 500)
+    ctx.moveTo(500, 0)
+    ctx.lineTo(0, 500)
+    ctx.stroke()
+
+
+  </script>
+  -->
+
+  <!--Oppgave 2. Rektangler
+<canvas id="sqr"></canvas>
+
+<script>
+  const canvas = document.getElementById("sqr")
+  canvas.width = 600
+  canvas.height = 600
+  const ctx = canvas.getContext("2d")
+
+  const sqrSize = 200
+
+  const draw = (x, y, fillColor) => {
+    ctx.beginPath();
+    ctx.rect(x, y, sqrSize, sqrSize)
+    ctx.fillStyle = fillColor
+    ctx.strokeStyle = "black"
+    ctx.fill()
+    ctx.stroke()
+    ctx.closePath();
+  };
+
+  draw(0, 0, "red");
+  draw(200, 200, "green");
+  draw(400, 400, "blue");
+
+
+</script>
+-->
+
+<canvas id="clock"></canvas>
+
+<script>
+  const canvas = document.getElementById("clock")
+  canvas.width = 700
+  canvas.height = 700
+  const ctx = canvas.getContext("2d")
+
+  ctx.beginPath()
+  ctx.arc(350, 350, 350, 0, 2 * Math.PI)
+  ctx.font = "30px Arial"
+
+  ctx.fillText("12", 330, 30)
+  ctx.fillText("11", 150, 90)
+  ctx.fillText("1", 520, 90)
+  ctx.fillText("10", 60, 200)
+  ctx.fillText("2", 620, 200)
+  ctx.fillText("9", 20, 350)
+  ctx.fillText("3", 670, 350)
+  ctx.fillText("8", 60, 520)
+  ctx.fillText("4", 620, 520)
+  ctx.fillText("7", 200, 645)
+  ctx.fillText("5", 500, 645)
+  ctx.fillText("6", 345, 690)
+  /* 15.40
+  // Lang
+  ctx.moveTo(350, 350)
+  ctx.lineTo(60, 515)
+  ctx.stroke()
+  //Kort
+  ctx.moveTo(350, 350)
+  ctx.lineTo(550, 415)
+  ctx.stroke()
+*/
+  //18.30
+  // Lang
+  ctx.moveTo(350, 350)
+  ctx.lineTo(60, 515)
+  ctx.stroke()
+  //Kort
+  ctx.moveTo(350, 350)
+  ctx.lineTo(550, 415)
+  ctx.stroke()
+
+
+  ctx.closePath()
+</script>
 </body>
 </html>

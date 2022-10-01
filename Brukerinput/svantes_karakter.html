@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Svantes karakter</title>
+</head>
+<body>
+  <h2>Svantes karakterer</h2>
+  <p>
+    <label for="del1">Deleksamen 1:</label>
+    <input type="number" id="del1"/>
+  </p>
+  <p>
+    <label for="del2">Deleksamen 1:</label>
+    <input type="number" id="del2"/>
+  </p>
+  <p>
+    <label for="del3">Deleksamen 1:</label>
+    <input type="number" id="del3"/>
+  </p>
+  <p>
+    <label for="del4">Deleksamen 1:</label>
+    <input type="number" id="del4"/>
+  </p>
+  <p>
+    <button id="reg">Registrer</button>
+  </p>
+  
+
+  <script>
+
+    document.getElementById("reg").addEventListener("click", regnUt)
+
+    function regnUt(){
+      const del1 = document.getElementById("del1")
+      const del2 = document.getElementById("del2")
+      const del3 = document.getElementById("del3")
+      const del4 = document.getElementById("del4")
+
+      console.log(regnUt());
+
+    }
+
+
+  </script>
+</body>
+</html>
