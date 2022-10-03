@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas brukerinput</title>
+</head>
+<body>
+  <canvas id="drawing"></canvas>
+
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(138, 134, 134);
+    }
+
+    #drawing {
+      background-color: rgb(231, 217, 197);
+    }
+  </style>
+
+  <script>
+    const canvas = document.getElementById("drawing")
+    canvas.width = 800
+    canvas.height = 800
+    const ctx = canvas.getContext("2d")
+
+    ctx.beginPath()
+    ctx.rect(0, 0, 100, 100);
+    ctx.rect(200, 0, 100, 100);
+    ctx.rect(400, 0, 100, 100);
+    ctx.rect(600, 0, 100, 100);
+    ctx.fill()
+
+
+
+  </script>
+  
+</body>
+</html>
