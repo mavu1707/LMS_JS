@@ -20,6 +20,10 @@
   </div>
 
   <div id="right">
+    <div id="time">
+      <p>Antall sekunder igjen: </p>
+      <p id="gametime"></p>
+    </div>
     <h2>Gjettede ord: </h2>
     <ul id="wordlist"></ul>
   </div>
@@ -30,13 +34,32 @@
     var randomWord = ""
     var correctWords = []
     var correctWordsHTML =""
+    var wordValidity = true;
+    var timer;
 
     function start(){
       document.getElementById("word").disabled = false
+      document.getElementById("gametime").innerHTML = 2
+      document.getElementById("start").style.display = "none"
 
       randomWord = randomWords[Math.floor(Math.random() * randomWords.length)]
       randomWord.toUpperCase()
       document.getElementById("randomword").innerHTML = randomWord
+
+      timer = setInterval(countDown, 1000)
+
+    }
+
+    function countDown(){
+      var seconds = Number(document.getElementById("gametime").innerHTML)
+      seconds--
+      document.getElementById("gametime").innerHTML = seconds
+
+      if(seconds == 0){
+        document.getElementById("word").disabled = true
+        clearInterval(timer)
+        document.getElementById("start").style.display = "block"
+      }
 
     }
 
@@ -65,16 +88,22 @@
             }
           }
         }else{
+          wordValidity = false
           document.getElementById("word").value=""
         }
       }
 
-      if(correctWords.includes(guessedWord) == true){
+      if(wordValidity == true){
+        if(correctWords.includes(guessedWord) == true){
         document.getElementById("word").value = ""
+        }else{
+          correctWords.push(guessedWord)
+          console.log(correctWords)
+          printCorrectWords()
+          wordValidity = true
+        }
       }else{
-        correctWords.push(guessedWord)
-        console.log(correctWords)
-        printCorrectWords()
+        wordValidity = true
       }
     }
 
