@@ -16,7 +16,7 @@
     <input id="word" type="text" disabled/> <!--Den har disabled på slutten slik at vi ikke kan skrive uten at vi trykker på start spillet-->
     <button id="check">Sjekk</button>
 
-    <p><button id="start">Start spillet</button></p>
+    <p><button id="start" onclick="start()">Start spillet</button></p>
   </div>
 
   <div id="right">
@@ -63,7 +63,7 @@
 
     }
 
-    document.getElementById("start").addEventListener("click", start)
+    //document.getElementById("start").addEventListener("click", start)
 
     function printCorrectWords(){
       for(var ci = 0; ci < correctWords.length; ci++){
