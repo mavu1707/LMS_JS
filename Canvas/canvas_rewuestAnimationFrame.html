@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReqAnimFrame</title>
+
+  <style>
+    body{
+      background-color: antiquewhite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    canvas {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="anim"></canvas>
+
+  <script>
+    const canvas = document.getElementById("anim")
+    canvas.width = 600
+    canvas.height = 400
+    const ctx = canvas.getContext("2d")
+
+    function drawRect() {
+      ctx.beginPath()
+      ctx.fillRect(x, y, 50, 50)
+      ctx.closePath()
+    }
+
+    let x = 0
+    let y = 0
+    
+    function drawElements() {
+      drawRect()
+      x = x + 10
+      y = y + 10
+
+      requestAnimationFrame(drawElements)
+    }
+
+    requestAnimationFrame(drawElements);
+
+  </script>
+  
+</body>
+</html>
