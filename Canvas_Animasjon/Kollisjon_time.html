@@ -145,7 +145,10 @@
                 down = false
                 
             }
-            if(
+            if(x + hero.width >= canvas.width){
+                console.log("hei");
+            }
+            /*if(
                 x + hero.width >= canvas.width ||
                 x + hero.width <= hero.width ||
                 y + hero.height >= canvas.height ||
@@ -156,7 +159,7 @@
                 up = false
                 down = false
             }
-           
+           */
 
             //Kjører tegning av fjell:
             drawMountain()
