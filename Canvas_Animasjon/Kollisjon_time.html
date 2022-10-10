@@ -60,8 +60,8 @@
         }
 
         //startpunkt for x og y i tegning av firkant
-        let x = 100
-        let y = 100
+        let x = 2
+        let y = 2
         //startpunkt for retning (ingen retning før tastetrykk)
         //let direction = false;
         let left = false
@@ -134,10 +134,10 @@
 
             //Kollisjonssjekk mellom grønn firkant og fjell
             if(
-                x + hero.width > mountain.x && 
-                x < mountain.x + mountain.width && 
-                y + hero.height > mountain.y && 
-                y < mountain.y + mountain.height
+                x + hero.width >= mountain.x && 
+                x <= mountain.x + mountain.width && 
+                y + hero.height >= mountain.y && 
+                y <= mountain.y + mountain.height
             ) {
                 right = false
                 left = false
@@ -146,10 +146,10 @@
                 
             }
             if(
-                x + hero.width > canvas.width ||
-                x + hero.width < hero.width ||
-                y + hero.height > canvas.height ||
-                y + hero.width < hero.height
+                x + hero.width >= canvas.width ||
+                x + hero.width <= hero.width ||
+                y + hero.height >= canvas.height ||
+                y + hero.width <= hero.height
             ){
                 right = false
                 left = false
