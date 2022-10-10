@@ -60,8 +60,8 @@
         }
 
         //startpunkt for x og y i tegning av firkant
-        let x = 0
-        let y = 0
+        let x = 100
+        let y = 100
         //startpunkt for retning (ingen retning før tastetrykk)
         //let direction = false;
         let left = false
@@ -145,13 +145,18 @@
                 down = false
                 
             }
-
             if(
-                hero.width > canvas.width
+                x + hero.width > canvas.width ||
+                x + hero.width < hero.width ||
+                y + hero.height > canvas.height ||
+                y + hero.width < hero.height
             ){
                 right = false
                 left = false
+                up = false
+                down = false
             }
+           
 
             //Kjører tegning av fjell:
             drawMountain()
@@ -160,9 +165,7 @@
         }
 
         //kjør requestAnimationFrame første gang ved innlasting
-        requestAnimationFrame(drawElements)
+        requestAnimationFrame(drawElements);
     </script>
-
-    // collision javascript?
 </body>
 </html>
