@@ -36,10 +36,14 @@
         }
 
         //startpunkt for x og y i tegning av firkant
-        let x = 0
-        let y = 0
+        let x = 475
+        let y = 175
         //startpunkt for retning (ingen retning før tastetrykk)
-        let direction = false;
+        //let direction = false;
+        let left = false
+        let right = false
+        let up = false
+        let down = false
         //starthastighet
         let boost = 1
 
@@ -48,18 +52,17 @@
         document.addEventListener("keydown", event => {
                 //Hvis event.key er en piltast, set verdien av direction i henhold til pil
                 if(event.key === "ArrowRight") {
-                    direction = "right"
+                    right = true
                 }
                 if(event.key === "ArrowLeft") {
-                    direction = "left"
+                    left = true
                 }
-                if(event.key === "ArrowUp"){
-                  direction = "up"
+                if(event.key === "ArrowUp") {
+                  up = true
                 }
-                if (event.key === "ArrowDown"){
-                  direction = "down"
+                if(event.key === "ArrowDown") {
+                  down = true
                 }
-                console.log(direction)
 
                 //Hvis s er trykket ned, sett boost til 5 (flytt flere pixler per opptegning)
                 if(event.key === "s") {
@@ -71,9 +74,10 @@
         //https://lms.webtricks.blog/kurs/innforing-i-programmering/8-brukerinput/tastaturinput
         document.addEventListener("keyup", event => {
             //Når vi slipper opp en piltast, sett direction til false for å slutte å bevege elementet.
-            if(event.key === "ArrowRight" || event.key === "ArrowLeft") {
-                direction = false;
-            }
+            event.key === "ArrowRight" ? right = false : null
+            event.key === "ArrowLeft" ? left = false : null
+            event.key === "ArrowUp" ? up = false : null
+            event.key === "ArrowDown" ? down = false : null
             //Når s-tasten slippes, sett boost tilbake til 1
             if(event.key === "s") {
                 boost = 1
@@ -87,11 +91,17 @@
             //tegn firkant
             drawRect()
             //oppdater posisjon til neste tegning
-            if(direction === "right") {
+            if(right === true) {
                 x = x + boost
             }
-            if(direction === "left") {
+            if(left  === true) {
                 x = x - boost
+            }
+            if(up === true) {
+              y = y - boost
+            }
+            if(down === true) {
+              y = y + boost
             }
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
