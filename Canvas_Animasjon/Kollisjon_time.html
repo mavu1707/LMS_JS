@@ -28,16 +28,40 @@
         //hent kontekst
         const ctx = canvas.getContext("2d")
 
+
         //Funksjon som tegner firkanten
+        const hero = {
+            fillcolor: "green",
+            width: 50,
+            height: 50
+        }
         function drawRect() {
             ctx.beginPath()
-            ctx.fillRect(x, y, 50, 50)
+            ctx.fillStyle = hero.fillcolor
+            ctx.fillRect(x, y, hero.width, hero.height)
+            ctx.closePath()
+        }
+
+        let testx = (canvas.width / 2) - (hero.width / 2)
+        let testy = (canvas.height / 2) - (hero.height / 2)
+        //Funksjon som tegner fjell
+        const mountain = {
+            color: "gray",
+            x: canvas.width / 2 - 100,
+            y: canvas.height / 2 - 40,
+            width: 200,
+            height: 80
+        }
+        function drawMountain() {
+            ctx.beginPath()
+            ctx.fillStyle = "gray"
+            ctx.fillRect(mountain.x, mountain.y, mountain.width, mountain.height)
             ctx.closePath()
         }
 
         //startpunkt for x og y i tegning av firkant
-        let x = 475
-        let y = 175
+        let x = 0
+        let y = 0
         //startpunkt for retning (ingen retning før tastetrykk)
         //let direction = false;
         let left = false
@@ -58,11 +82,12 @@
                     left = true
                 }
                 if(event.key === "ArrowUp") {
-                  up = true
+                    up = true
                 }
                 if(event.key === "ArrowDown") {
-                  down = true
+                    down = true
                 }
+                //console.log(direction)
 
                 //Hvis s er trykket ned, sett boost til 5 (flytt flere pixler per opptegning)
                 if(event.key === "s") {
@@ -74,6 +99,9 @@
         //https://lms.webtricks.blog/kurs/innforing-i-programmering/8-brukerinput/tastaturinput
         document.addEventListener("keyup", event => {
             //Når vi slipper opp en piltast, sett direction til false for å slutte å bevege elementet.
+            /*if(event.key === "ArrowRight" || event.key === "ArrowLeft") {
+                direction = false;
+            }*/
             event.key === "ArrowRight" ? right = false : null
             event.key === "ArrowLeft" ? left = false : null
             event.key === "ArrowUp" ? up = false : null
@@ -94,21 +122,47 @@
             if(right === true) {
                 x = x + boost
             }
-            if(left  === true) {
+            if(left === true) {
                 x = x - boost
             }
             if(up === true) {
-              y = y - boost
+                y = y - boost
             }
             if(down === true) {
-              y = y + boost
+                y = y + boost
             }
+
+            //Kollisjonssjekk mellom grønn firkant og fjell
+            if(
+                x + hero.width > mountain.x && 
+                x < mountain.x + mountain.width && 
+                y + hero.height > mountain.y && 
+                y < mountain.y + mountain.height
+            ) {
+                right = false
+                left = false
+                up = false
+                down = false
+                
+            }
+
+            if(
+                hero.width > canvas.width
+            ){
+                right = false
+                left = false
+            }
+
+            //Kjører tegning av fjell:
+            drawMountain()
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
         }
 
         //kjør requestAnimationFrame første gang ved innlasting
-        requestAnimationFrame(drawElements);
+        requestAnimationFrame(drawElements)
     </script>
+
+    // collision javascript?
 </body>
 </html>
