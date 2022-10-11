@@ -28,23 +28,17 @@
         //hent kontekst
         const ctx = canvas.getContext("2d")
 
-        //Funksjon som tegner firkanten
-        const hero = {
-          fillcolor: "green",
-          width: 50,
-          height: 50
-        }
 
+        //Funksjon som tegner firkanten
         function drawRect() {
             ctx.beginPath()
-            ctx.fillStyle = hero.fillcolor
-            ctx.fillRect(x, y, hero.width, hero.height)
+            ctx.fillRect(x, y, 50, 50)
             ctx.closePath()
         }
 
         //startpunkt for x og y i tegning av firkant
-        let x = 475
-        let y = 175
+        let x = 2
+        let y = 2
         //startpunkt for retning (ingen retning før tastetrykk)
         //let direction = false;
         let left = false
@@ -65,11 +59,12 @@
                     left = true
                 }
                 if(event.key === "ArrowUp") {
-                  up = true
+                    up = true
                 }
                 if(event.key === "ArrowDown") {
-                  down = true
+                    down = true
                 }
+                //console.log(direction)
 
                 //Hvis s er trykket ned, sett boost til 5 (flytt flere pixler per opptegning)
                 if(event.key === "s") {
@@ -81,6 +76,9 @@
         //https://lms.webtricks.blog/kurs/innforing-i-programmering/8-brukerinput/tastaturinput
         document.addEventListener("keyup", event => {
             //Når vi slipper opp en piltast, sett direction til false for å slutte å bevege elementet.
+            /*if(event.key === "ArrowRight" || event.key === "ArrowLeft") {
+                direction = false;
+            }*/
             event.key === "ArrowRight" ? right = false : null
             event.key === "ArrowLeft" ? left = false : null
             event.key === "ArrowUp" ? up = false : null
@@ -101,25 +99,15 @@
             if(right === true) {
                 x = x + boost
             }
-            if(left  === true) {
+            if(left === true) {
                 x = x - boost
             }
             if(up === true) {
-              y = y - boost
+                y = y - boost
             }
             if(down === true) {
-              y = y + boost
+                y = y + boost
             }
-
-            if(
-              x + hero.width > canvas.x &&
-              x < canvas.x + canvas.width &&
-              y + hero.height > canvas.y &&
-              y < canvas.y + canvas.height
-            ){
-
-            }
-
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
         }
