@@ -29,9 +29,16 @@
         const ctx = canvas.getContext("2d")
 
         //Funksjon som tegner firkanten
+        const hero = {
+          fillcolor: "green",
+          width: 50,
+          height: 50
+        }
+
         function drawRect() {
             ctx.beginPath()
-            ctx.fillRect(x, y, 50, 50)
+            ctx.fillStyle = hero.fillcolor
+            ctx.fillRect(x, y, hero.width, hero.height)
             ctx.closePath()
         }
 
@@ -103,6 +110,16 @@
             if(down === true) {
               y = y + boost
             }
+
+            if(
+              x + hero.width > canvas.x &&
+              x < canvas.x + canvas.width &&
+              y + hero.height > canvas.y &&
+              y < canvas.y + canvas.height
+            ){
+
+            }
+
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
         }
