@@ -7,7 +7,7 @@
     <title>Canvas: Animation with controlled movement</title>
     <style>
         body {
-            background: #f3f3f3;
+            background: #9e9a9a;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,64 +23,52 @@
     <script>
         //gjøre klart canvas:
         const canvas = document.getElementById("animarea")
-        canvas.width = 1000
+        canvas.width = 400
         canvas.height = 400
-        //hent kontekst
         const ctx = canvas.getContext("2d")
 
-        //Funksjon for random verdi:
         function randomMinMax(min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min)
         }
 
-        //Gjør klar en array for å lagre fjell
         const mountains = []
 
-        //Løkke som går 5 ganger, og oppretter et fjell med tilfeldige verdier hver runde løkken går
-        //https://lms.webtricks.blog/kurs/innforing-i-programmering/10-canvas-animasjon/randomisering-tilfeldig-utvalg-verdi
         for(let antallFjell = 0; antallFjell < 5; antallFjell++) {
-            //Setter objektet inn i arrayen mountains
             mountains.push({
                 color: "gray",
                 x: randomMinMax(0, canvas.width),
                 y: randomMinMax(0, canvas.height),
-                ctx.arc(10, 10, )
+                width: 10,
+                height: 10
             })
         }
 
-        //Funksjon som tegner fjell, tar imot parametere for å kunne sende inn verdier fra arrayen mountains
-        function drawMountain(x, y, test) {
+        function drawMountain(x,y,w,h) {
             ctx.beginPath()
             ctx.fillStyle = "gray"
-            ctx.fillArc(x, y, r, v, w)
+            ctx.fillRect(x, y, w, h)
             ctx.closePath()
         }
 
-        //startpunkt for x og y i tegning av firkant
-        let x = 0
-        let y = 0
-        //startpunkt for retning (ingen retning før tastetrykk)
-        //https://lms.webtricks.blog/kurs/innforing-i-programmering/10-canvas-animasjon/styre-bevegelse
-        let left = false
-        let right = false
-        let up = false
-        let down = false
-
-
-        //samlefunksjon for å tømme canvas og tegne opp elementer
         function drawElements() {
-
-            //Gå gjennom hele mountains-arrayen, lagre hvert object i mountain:
             mountains.map(mountain => {
-                //Tegn opp fjell med verdier fra objectet
-                drawMountain(mountain.x, mountain.y, mountain.radius, mountain.v, mountain.w)
+                drawMountain(mountain.x, mountain.y, mountain.width, mountain.height)
             })
-            //fortsett requestAnimationFrame
-            requestAnimationFrame(drawElements)
+        }
+        
+        requestAnimationFrame(drawElements)
+
+/*
+        function drawCircle(x,y,radius){
+            ctx.beginPath()
+            ctx.fillStyle = "gold"
+            ctx.arc(x, y, radius, 0, 2 * Math.PI)
+            ctx.fill()
+            ctx.closePath()
         }
 
-        //kjør requestAnimationFrame første gang ved innlasting
-        requestAnimationFrame(drawElements)
+        drawCircle(100, 100, 10)
+*/
     </script>
 </body>
 </html>
