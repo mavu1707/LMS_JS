@@ -48,13 +48,13 @@
         //Funksjon som tegner fjell
         const mountains = []
 
-        for(let i = 0; i < 5; i++){
+        for(let i = 0; i < 1; i++){
             mountains.push( {
                 color: "gray",
                 x: randomMinMax(0, canvas.width),
                 y: randomMinMax(0, canvas.height),
-                width: randomMinMax(100, 400),
-                height: randomMinMax(50, 200)
+                width: 20,
+                height: 60
             })
         }
         
@@ -160,7 +160,7 @@
             
             //Kjører tegning av fjell:
             mountains.map(mountain =>{
-                drawMountain(mountain.x, mountain.y, mountain.width, mountain.height)
+                drawMountain(0, mountain.y, mountain.width, mountain.height)
             })
 
             //fortsett requestAnimationFrame
