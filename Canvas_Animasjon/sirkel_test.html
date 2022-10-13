@@ -27,37 +27,24 @@
         canvas.height = 400
         const ctx = canvas.getContext("2d")
 
+        //randomisering
         function randomMinMax(min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min)
         }
 
-        const mountains = []
+        const coins = []
 
-        for(let antallFjell = 0; antallFjell < 5; antallFjell++) {
-            mountains.push({
-                x: randomMinMax(0, canvas.width),
-                y: randomMinMax(0, canvas.height),
-                width: 10,
-                height: 10
-            })
+        for(let i = 0; i < 5; i++){
+          coins.push({
+            x: randomMinMax(0, canvas.width),
+            y: randomMinMax(0, canvas.width),
+            r: 10,
+            o: 0,
+            m: 2 * Math.PI
+          })
         }
 
-        function drawMountain(x,y,w,h) {
-            ctx.beginPath()
-            ctx.fillStyle = "gray"
-            ctx.fillRect(x, y, w, h)
-            ctx.closePath()
-        }
-
-        function drawElements() {
-            mountains.map(mountain => {
-                drawMountain(mountain.x, mountain.y, mountain.width, mountain.height)
-            })
-        }
-
-        requestAnimationFrame(drawElements)
-
-/*
+        //tegner opp sirkelen
         function drawCircle(x,y,radius){
             ctx.beginPath()
             ctx.fillStyle = "gold"
@@ -66,8 +53,13 @@
             ctx.closePath()
         }
 
-        drawCircle(100, 100, 10)
-*/
+        function test(){
+          coins.map(test =>{
+            drawCircle(test.x, test.y, test.r, test.o, test.m)
+          })
+        }
+
+        test()
     </script>
 </body>
 </html>
