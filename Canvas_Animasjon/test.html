@@ -19,6 +19,42 @@
 </head>
 <body>
     <canvas id="animarea"></canvas>
+    <script>
+        //gjøre klart canvas:
+        const canvas = document.getElementById("animarea")
+        canvas.width = 400
+        canvas.height = 400
+        const ctx = canvas.getContext("2d")
+
+
+        function drawBall(x,y,radius) {
+            ctx.beginPath
+            ctx.fillStyle = "red"
+            ctx.arc(x, y, radius, 0, Math.PI * 2)
+            ctx.fill()
+            ctx.closePath
+        }
+
+        const ballRadius = 10
+        let ballX = canvas.width / 2
+        let ballY = canvas.height - ballRadius
+
+        function draw(){
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+            drawBall(ballX, ballY, ballRadius)
+
+            ballX +=2
+            ball -= 2
+        }
+
+        const animateBall = setInterval(draw, 10);
+
+    </script>
+    
+    <!--
+    <canvas id="animarea"></canvas>
 
     <script>
         //gjøre klart canvas:
@@ -69,5 +105,7 @@
         drawCircle(100, 100, 10)
 */
     </script>
+-->
 </body>
+
 </html>
