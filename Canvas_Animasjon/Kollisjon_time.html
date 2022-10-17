@@ -138,7 +138,7 @@
                 y = y + boost
             }
 
-            //Kollisjonssjekk mellom grønn firkant og fjell
+            /*Kollisjonssjekk mellom grønn firkant og fjell
             if(
                 x + hero.width > mountains.x && 
                 x < mountains.x + mountains.width && 
@@ -147,22 +147,59 @@
             ) {
                 console.log("Du kræsjer i firkanten")
             }
-
-            //kollisjonssjekk mellom grønn firkant og vegg
+            x + hero.width <= hero.width
+            y + hero.height >= canvas.height
+            y + hero.width <= hero.height
+            */
+            //kollisjonssjekk mellom grønn firkant og vegg resttet x og y verdien
             if(
-                x + hero.width >= canvas.width ||
-                x + hero.width <= hero.width ||
-                y + hero.height >= canvas.height ||
+                x + hero.width >= canvas.width
+            ){
+                right = false
+                console.log("Høyre");
+            }
+
+            if(
+                x + hero.width <= hero.width
+            ){
+                left = false
+                console.log("Vestre");
+            }
+
+            if(
+                y + hero.height >= canvas.height
+            ){
+                down = false
+                console.log("Ned");
+            }
+
+            if(
                 y + hero.width <= hero.height
             ){
-                console.log("Du kræsjer i en vegg");
+                up = false
+                console.log("Opp");
             }
             
+            let collission = false
             //Kjører tegning av fjell:
             mountains.map(mountain =>{
+                if(
+                    x + hero.width > mountain.x && 
+                    x < mountain.x + mountain.width && 
+                    y + hero.height > mountain.y && 
+                    y < mountain.y + mountain.height
+                ){
+                    collission = true
+                }
                 drawMountain(mountain.x, mountain.y, mountain.width, mountain.height)
             })
 
+            if(collission){
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.font = "70px Arial"
+                ctx.fillText("GAME OVER", 400, 150)
+
+            }
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
         }
