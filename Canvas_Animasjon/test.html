@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas: Animation with controlled movement</title>
+    <style>
+        body {
+            background: #9e9a9a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animarea"></canvas>
+    <script>
+        //gjøre klart canvas:
+        const canvas = document.getElementById("animarea")
+        canvas.width = 400
+        canvas.height = 400
+        const ctx = canvas.getContext("2d")
+
+
+        function drawBall(x,y,radius) {
+            ctx.beginPath
+            ctx.fillStyle = "red"
+            ctx.arc(x, y, radius, 0, Math.PI * 2)
+            ctx.fill()
+            ctx.closePath
+        }
+
+        const ballRadius = 10
+        let ballX = canvas.width / 2
+        let ballY = canvas.height - ballRadius
+
+        function draw(){
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+            drawBall(ballX, ballY, ballRadius)
+
+            ballX +=2
+            ball -= 2
+        }
+
+        const animateBall = setInterval(draw, 10);
+
+    </script>
+    
+    <!--
+    <canvas id="animarea"></canvas>
+
+    <script>
+        //gjøre klart canvas:
+        const canvas = document.getElementById("animarea")
+        canvas.width = 400
+        canvas.height = 400
+        const ctx = canvas.getContext("2d")
+
+        function randomMinMax(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        const mountains = []
+
+        for(let antallFjell = 0; antallFjell < 5; antallFjell++) {
+            mountains.push({
+                x: randomMinMax(0, canvas.width),
+                y: randomMinMax(0, canvas.height),
+                width: 10,
+                height: 10
+            })
+        }
+
+        function drawMountain(x,y,w,h) {
+            ctx.beginPath()
+            ctx.fillStyle = "gray"
+            ctx.fillRect(x, y, w, h)
+            ctx.closePath()
+        }
+
+        function drawElements() {
+            mountains.map(mountain => {
+                drawMountain(mountain.x, mountain.y, mountain.width, mountain.height)
+            })
+        }
+
+        requestAnimationFrame(drawElements)
+
+/*
+        function drawCircle(x,y,radius){
+            ctx.beginPath()
+            ctx.fillStyle = "gold"
+            ctx.arc(x, y, radius, 0, 2 * Math.PI)
+            ctx.fill()
+            ctx.closePath()
+        }
+
+        drawCircle(100, 100, 10)
+*/
+    </script>
+-->
+</body>
+
+</html>

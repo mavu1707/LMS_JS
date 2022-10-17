@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas: Animation with controlled movement</title>
+    <style>
+        body {
+            background: #9e9a9a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        canvas {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="animarea"></canvas>
+
+    <script>
+        //gjøre klart canvas:
+        const canvas = document.getElementById("animarea")
+        canvas.width = 400
+        canvas.height = 400
+        const ctx = canvas.getContext("2d")
+
+        //randomisering
+        function randomMinMax(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        const coins = []
+
+        for(let i = 0; i < 5; i++){
+          coins.push({
+            x: randomMinMax(0, canvas.width),
+            y: randomMinMax(0, canvas.width),
+            r: 10,
+            o: 0,
+            m: 2 * Math.PI
+          })
+        }
+
+        //tegner opp sirkelen
+        function drawCircle(x,y,radius){
+            ctx.beginPath()
+            ctx.fillStyle = "gold"
+            ctx.arc(x, y, radius, 0, 2 * Math.PI)
+            ctx.fill()
+            ctx.closePath()
+        }
+
+        function test(){
+          coins.map(test =>{
+            drawCircle(test.x, test.y, test.r, test.o, test.m)
+          })
+        }
+
+        test()
+    </script>
+</body>
+</html>

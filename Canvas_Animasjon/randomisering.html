@@ -28,6 +28,11 @@
         //hent kontekst
         const ctx = canvas.getContext("2d")
 
+        //Funksjon for random verdi:
+        function randomMinMax(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
         //Funksjon som tegner firkanten
         const hero = {
             fillcolor: "green",
@@ -41,26 +46,36 @@
             ctx.closePath()
         }
 
-        //Funksjon som tegner fjell
-        const mountain = {
-            color: "gray",
-            x: canvas.width / 2 - 100,
-            y: canvas.height / 2 - 40,
-            width: 200,
-            height: 80
+        //Gjør klar en array for å lagre fjell
+        const mountains = []
+
+        //Løkke som går 5 ganger, og oppretter et fjell med tilfeldige verdier hver runde løkken går
+        //https://lms.webtricks.blog/kurs/innforing-i-programmering/10-canvas-animasjon/randomisering-tilfeldig-utvalg-verdi
+        for(let antallFjell = 0; antallFjell < 5; antallFjell++) {
+            //Setter objektet inn i arrayen mountains
+            mountains.push({
+                color: "gray",
+                x: randomMinMax(0, canvas.width),
+                y: randomMinMax(0, canvas.height),
+                width: randomMinMax(100, 400),
+                height: randomMinMax(50, 200)
+            })
         }
-        function drawMountain() {
+
+        console.log(mountains)
+        //Funksjon som tegner fjell, tar imot parametere for å kunne sende inn verdier fra arrayen mountains
+        function drawMountain(x,y,w,h) {
             ctx.beginPath()
             ctx.fillStyle = "gray"
-            ctx.fillRect(mountain.x, mountain.y, mountain.width, mountain.height)
+            ctx.fillRect(x, y, w, h)
             ctx.closePath()
         }
 
         //startpunkt for x og y i tegning av firkant
-        let x = 1
-        let y = 175
+        let x = 0
+        let y = 0
         //startpunkt for retning (ingen retning før tastetrykk)
-        //let direction = false;
+        //https://lms.webtricks.blog/kurs/innforing-i-programmering/10-canvas-animasjon/styre-bevegelse
         let left = false
         let right = false
         let up = false
@@ -84,7 +99,6 @@
                 if(event.key === "ArrowDown") {
                     down = true
                 }
-                //console.log(direction)
 
                 //Hvis s er trykket ned, sett boost til 5 (flytt flere pixler per opptegning)
                 if(event.key === "s") {
@@ -96,9 +110,6 @@
         //https://lms.webtricks.blog/kurs/innforing-i-programmering/8-brukerinput/tastaturinput
         document.addEventListener("keyup", event => {
             //Når vi slipper opp en piltast, sett direction til false for å slutte å bevege elementet.
-            /*if(event.key === "ArrowRight" || event.key === "ArrowLeft") {
-                direction = false;
-            }*/
             event.key === "ArrowRight" ? right = false : null
             event.key === "ArrowLeft" ? left = false : null
             event.key === "ArrowUp" ? up = false : null
@@ -116,41 +127,45 @@
             //tegn firkant
             drawRect()
             //oppdater posisjon til neste tegning
-            if(right === true) {
-                x = x + boost
-            }
-            if(left === true) {
-                x = x - boost
-            }
-            if(up === true) {
-                y = y - boost
-            }
-            if(down === true) {
-                y = y + boost
-            }
+            if(right === true) { x = x + boost }
+            if(left === true) { x = x - boost }
+            if(up === true) { y = y - boost }
+            if(down === true) { y = y + boost }
 
-            //Kollisjonssjekk mellom grønn firkant og fjell
-            if(
-                x + hero.width > mountain.x && 
-                x < mountain.x + mountain.width && 
-                y + hero.height > mountain.y && 
-                y < mountain.y + mountain.height
-            ) {
-                console.log("Du kræsjer i firkanten")
-            }
-
-            //kollisjonssjekk mellom grønn firkant og vegg
-            if(
-                x + hero.width >= canvas.width ||
-                x + hero.width <= hero.width ||
-                y + hero.height >= canvas.height ||
-                y + hero.width <= hero.height
-            ){
-                console.log("Du kræsjer i en vegg");
-            }
-
+            //Klargjør variabel for å lagre kollisjon
+            let collision = false
             //Kjører tegning av fjell:
-            drawMountain()
+            //Gå gjennom hele mountains-arrayen, lagre hvert object i mountain:
+            mountains.map(mountain => {
+                //Kjør kollisjonssjekk for hvert fjell mot helten
+                //https://lms.webtricks.blog/kurs/innforing-i-programmering/10-canvas-animasjon/kollisjonsdeteksjon
+                if(
+                    x + hero.width > mountain.x && 
+                    x < mountain.x + mountain.width && 
+                    y + hero.height > mountain.y && 
+                    y < mountain.y + mountain.height
+                ) {
+                    //Hvis kollisjon, set colloision til true
+                    collision = true
+                }
+                //Tegn opp fjell med verdier fra objectet
+                drawMountain(mountain.x, mountain.y, mountain.width, mountain.height)
+            })
+
+            //Hvis kollisjon er detektert, tøm canvas og skriv ut game over
+            if(collision) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                ctx.font = "70px Arial"
+                ctx.fillStyle = "red"
+                ctx.fillText("Game Over!", 400, 150)
+            }
+            //Hvis helten når høyre side av canvas, tøm canvas og skriv ut vinnertekst
+            if(x + hero.width > canvas.width) {
+                ctx.clearRect(0,0, canvas.width, canvas.height)
+                ctx.font = "70px Arial"
+                ctx.fillStyle = "green"
+                ctx.fillText("Du vant!", 400, 150)
+            }
             //fortsett requestAnimationFrame
             requestAnimationFrame(drawElements)
         }
