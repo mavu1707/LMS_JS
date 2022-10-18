@@ -183,19 +183,7 @@
             let collission = false
             //Kjører tegning av fjell:
             mountains.map(mountain =>{
-<<<<<<< HEAD
-                if(
-                    x + hero.width > mountain.x && 
-                    x < mountain.x + mountain.width && 
-                    y + hero.height > mountain.y && 
-                    y < mountain.y + mountain.height
-                ){
-                    collission = true
-                }
-                drawMountain(mountain.x, mountain.y, mountain.width, mountain.height)
-=======
                 drawMountain(0, mountain.y, mountain.width, mountain.height)
->>>>>>> dc603559fe17d4a534d3e08e80597cf292ee5270
             })
 
             if(collission){
